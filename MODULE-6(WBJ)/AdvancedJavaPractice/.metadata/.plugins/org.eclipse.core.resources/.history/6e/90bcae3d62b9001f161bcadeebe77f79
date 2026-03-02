@@ -1,0 +1,15 @@
+package tester;
+
+import dependency.ScienceTeacher;
+import dependent.PublicSchool;
+
+public class TestSchool {
+
+	public static void main(String[] args) {
+		PublicSchool mySchool=new PublicSchool(new ScienceTeacher());
+	//	mySchool.setSubjectTeacher();
+		mySchool.manageAcademics();
+
+	}
+
+}

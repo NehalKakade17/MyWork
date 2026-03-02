@@ -1,0 +1,48 @@
+Steps
+1. Create a new workspace for web java
+2. Use : STS 3.9.18 , JDK 11 , Tomcat 9.0.88
+3. Change perspective to Java EE
+4. Delete VMware's tc server
+5. Add Tomcat server to the workspace.
+6. Start the server --chk Server side console  --error free
+
+7. Create a dynamic web project ,to deploy monolithic web app (server side will render the view :HTTP  resp content type : text/html)
+7.1 Add index.html : welcome page
+eg : http://localhost:8080/test_web/
+resp : index.html
+
+
+7.2 Add a link in index.html --> to invoke the servlet
+7.3 Create HelloWorldServlet to send a dyn resp to the clnt
+(welcome mesg + server side time stamp)
+
+After clicking on the link
+http://localhost:8080/test_web/hello
+
+/hello : URL pattern --> map to the servlet
+
+7.4 
+Create another link : Invoke a servlet , deployed via XML tags
+Create another servlet : SecondServlet 
+which will respond to 
+http://localhost:8080/test_web/hello2
+
+7.5 Create another dynamic web project to start with a case study.
+(online voting)
+
+7.6 Integrate servlets with JDBC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

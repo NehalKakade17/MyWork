@@ -1,0 +1,213 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0e7f5; 
+}
+
+.navbar {
+    background-color: #e0e7f5 ; 
+    display: flex; 
+    align-items: center;
+    overflow: visible;
+}
+.navbar-toggler-icon {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 4px; 
+}
+
+@media (max-width: 768px) {
+    .navbar-toggler {
+        display: block; 
+    }
+}
+.navbar-brand {
+    font-size: 25px !important;
+    font-weight: bolder;
+    color: #a52694 !important;
+}
+.nav-link {
+    font-size: 20px;
+    margin-left: 25px;
+    color: #007bff !important; 
+    transition: color 0.3s, transform 0.3s;
+
+}
+.nav-link:hover {
+    color: #2100b3 !important; 
+    text-decoration: underline;
+    transform: scale(1.1); 
+}
+/* Header Section */
+header {
+    background-image: url("https://img.freepik.com/free-vector/adventure-travel-lettering_23-2148446869.jpg?semt=ais_hybrid");
+    background-size: cover;
+    min-height: 100vh; 
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    position: relative; 
+}
+.logo {
+    max-width: 70px; 
+    height: auto;
+    margin-right: 10px;
+}
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0); 
+    }
+    50% {
+        transform: translateY(-10px); 
+    }
+}
+
+header h1 {
+    font-size: 50px; 
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a52694; 
+    animation: float 3s ease-in-out infinite; 
+}
+
+header p {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #a52694; 
+    font-weight: bold;
+    animation: float 3s ease-in-out infinite; 
+    animation-delay: 1s; 
+}
+
+
+.marquee {
+    width: 100%; 
+    overflow: hidden; /* Hide overflow */
+    white-space: nowrap; /* Prevent line breaks */
+    box-sizing: border-box; 
+}
+
+.marquee p {
+    display: inline-block; 
+    padding-left: 100%; /* Start off-screen */
+    animation: scroll 6s linear infinite; 
+    color: #a52694;
+    font-size: 30px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0); 
+    }
+    100% {
+        transform: translateX(-100%); 
+    }
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+/* Main Content */
+.container {
+    padding-top: 64px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* Featured Cars Section */
+.featured-cars h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 40px;
+    color: #343a40;
+    position: relative;
+}
+/* Card Styles */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s; 
+    border: none; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; 
+}
+
+.card:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
+}
+
+.card-img-top {
+    height: 200px; 
+    object-fit: cover; 
+    width: 100%;
+}
+
+.card-body {
+    background-color: #ffffff; 
+    padding: 30px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #37699e;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #2418c5;
+    border: none;
+    border-radius: 25px; 
+    padding: 10px 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #00b368;
+    transform: translateY(-2px); 
+}
+
+/* Footer */
+footer {
+    background: #1F1C2C;
+    background: -webkit-linear-gradient(to left, #928DAB, #1F1C2C);
+    background: linear-gradient(to left, #928DAB, #1F1C2C);
+    color: white;
+    padding: 20px 0;
+    position: relative;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+
+
+

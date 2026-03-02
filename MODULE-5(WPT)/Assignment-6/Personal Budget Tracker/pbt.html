@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Budget Tracker</title>
+    <link rel="stylesheet" href="pbt.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Budget Tracker</h1>
+        <form id="expenseForm">
+            <input type="text" id="description" placeholder="Expense Description" required>
+            <input type="number" id="amount" placeholder="Amount" required>
+            <input type="date" id="date" required>
+            <button type="submit">Add Expense</button>
+        </form>
+        <button id="filterBtn">Show Expenses Above $20</button>
+        <h2>Expenses</h2>
+        <ul id="expenseList"></ul>
+        <div id="totalExpense" style="font-size: 20px;">Total Expenses: $0.00</div>
+    </div>
+    <script src="pbt.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Multiplier</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #be3eb4;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+p {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Array Element Multiplier</h1>
+        <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas" />
+        <button id="multiplyButton">Multiply Array Elements by 2</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function forEachElement(array, callback) {
+            for (let i = 0; i < array.length; i++) {
+                callback(array[i], i); 
+            }
+        }
+        document.getElementById('multiplyButton').addEventListener('click', function() {
+            const input = document.getElementById('arrayInput').value; 
+            const numbers = input.split(',').map(Number); 
+
+            const results = []; 
+            forEachElement(numbers, function(element, index) {
+                const result = element * 2; 
+                results.push(`Index: ${index} Result: ${result}`); 
+            });
+            document.getElementById('result').innerText = results.join('\n');
+            });
+
+
+    </script>
+</body>
+</html>

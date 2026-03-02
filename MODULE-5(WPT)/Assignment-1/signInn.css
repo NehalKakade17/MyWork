@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url(https://media.licdn.com/dms/image/v2/D4D12AQFtwOgZ2_zXUg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1711846552503?e=2147483647&v=beta&t=oMkipyRCcgYg0tJEVUIiu62IxzsEBPV2Os1Vi8rrD5E);
+    margin-top: 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex; 
+    height: 50vh; 
+    width: 50%;
+    margin: auto;
+    
+}
+
+.signin-section {
+    flex: 1; 
+    padding: 40px;
+    background-color: #fff; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.signup-section {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #d181c4; 
+    color: white; 
+    border-radius: 10px;
+}
+
+h1{
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #181111;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3f28a7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.forgot-password {
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #007bff; 
+}
+
+.social-signin {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.icons a {
+    margin: 0 10px; 
+}
+
+.icons img {
+    width: 30px; 
+    height: auto;
+}
+
+.signup-button {
+    padding: 10px 20px;
+    background-color: #ffc107; 
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.signup-button:hover {
+    background-color: #18cf21; 
+}
+#CA{
+    border: 2px solid black;
+    font-size: 50px;
+    font-family: cursive;
+    border-radius: 15px;
+    background-color: rgb(234, 207, 235);
+    color: #3f28a7;
+}

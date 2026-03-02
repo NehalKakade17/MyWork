@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Listings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    .navbar {
+        background-color: #e0e7f5;
+        display: flex;
+        align-items: center;
+        overflow: visible;
+        height: 100px;
+    }
+
+    .navbar-toggler-icon {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+        .navbar-toggler {
+            display: block;
+        }
+    }
+
+    .navbar-brand {
+        font-size: 25px !important;
+        font-weight: bolder;
+        color: #a52694 !important;
+    }
+
+    .nav-link {
+        font-size: 20px;
+        margin-left: 25px;
+        color: #007bff !important;
+        transition: color 0.3s, transform 0.3s;
+
+    }
+
+    .nav-link:hover {
+        color: #2100b3 !important;
+        text-decoration: underline;
+        transform: scale(1.1);
+    }
+
+    main {
+        padding: 20px;
+        margin-bottom: 50px;
+    }
+
+    .card-img-top {
+        height: 200px !important;
+        object-fit: cover;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        transition: background-color 0.3s, transform 0.3s;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #00b336;
+        transform: scale(1.05);
+    }
+
+    footer {
+        background: #1F1C2C;
+        background: -webkit-linear-gradient(to left, #928DAB, #1F1C2C);
+        background: linear-gradient(to left, #928DAB, #1F1C2C);
+        color: white;
+        padding: 60px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 20px;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="https://cdn-icons-png.flaticon.com/128/4965/4965319.png" alt="NK Car Rental Logo" class="logo">
+    <a class="navbar-brand" href="home.html">NK Car Rental</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="carlisting.html">Car Listings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bookingform.html">Book a Car</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bookingmanagement.html">Your Bookings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Signup.html">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<body style="font-family: Arial, sans-serif; background-color: #dedaf0; margin: 0;">
+    <header
+        style="background-color: #88a8e7; color: rgb(192, 47, 192); padding: 20px; text-align: center; font-weight: bold;">
+        <h1>Available Cars</h1>
+        <a href="home.html" class="btn btn-light" style="margin-top: 10px; border: none;background-color: #dbe73a;">Back
+            to Home</a>
+    </header>
+    <main class="container" style="padding: 20px;">
+        <div class="row">
+            <!--Car Card 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://imgd.aeplcdn.com/310x174/n/cw/ec/137767/fortuner-legender-exterior-left-side-view.jpeg?isig=0&q=80&q=80"
+                        class="card-img-top" alt="Car Model 1" style="width: 100%; height: auto;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Toyota Fortuner</h5>
+                        <p class="card-text">Fortuner makes blazing new trails and conquering uncharted territory as
+                            easy as a walk in the park.</p>
+                        <p><strong>Rental Rate:</strong> ₹10000 per day</p>
+                        <p><strong>Specifications:</strong><br>
+                            - Engine: 4-Cylinder, In-Line<br>
+                            - Transmission: Automatic Idling <br>
+                            - Seats: 7</p>
+                        <a href="bookingform.html?car=Toyota%20Fortuner" class="btn btn-primary mt-auto">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--Car Card 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTykjz1aPg4eAvtC5ULSEF-tUswVIOlNVl3UQ&s"
+                        class="card-img-top" alt="Car Model 2" style="width: 100%; height: auto;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Honda Amaze</h5>
+                        <p class="card-text">High performing smooth and responsive technology innovated to give you a
+                            driving experience.</p>
+                        <p><strong>Rental Rate:</strong> ₹5500 per day</p>
+                        <p><strong>Specifications:</strong><br>
+                            - Engine: 1.2L i-VTEC<br>
+                            - Transmission: CVT<br>
+                            - Seats: 5</p>
+                        <a href="bookingform.html?car=Honda%20Amaze" class="btn btn-primary mt-auto">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--Car Card 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://imgd.aeplcdn.com/310x174/image/used/oybxt6r7y740.jpg?q=80" class="card-img-top"
+                        alt="Car Model 3" style="width: 100%; height: auto;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Ford Endeavour</h5>
+                        <p class="card-text">A car that gives powerful performance and stylish SUV look, best suited for
+                            long drives with family.</p>
+                        <p><strong>Rental Rate:</strong> ₹9000 per day</p>
+                        <p><strong>Specifications:</strong><br>
+                            - Engine: 3.0L V6 Turbo<br>
+                            - Transmission: Manual<br>
+                            - Seats: 7</p>
+                        <a href="bookingform.html?car=Ford%20Endeavour" class="btn btn-primary mt-auto">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--Car Card 4 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://imgd.aeplcdn.com/310x174/cw/ucp/stockApiImg/Y96WQ3K_85lqh32b_1_48634982.jpg?q=80"
+                        class="card-img-top" alt="Car Model 4" style="width: 100%; height: auto;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Nissan Magnite XL</h5>
+                        <p class="card-text">New Nissan Magnite brings alive Nissan’s philosophy of One Car, One World.
+                        </p>
+                        <p><strong>Rental Rate:</strong> ₹6000 per day</p>
+                        <p><strong>Specifications:</strong><br>
+                            - Engine: 1.0L B4D<br>
+                            - Transmission: Manual<br>
+                            - Seats: 5</p>
+                        <a href="bookingform.html?car=Nissan%20Magnite%20XL" class="btn btn-primary mt-auto">Book
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--Car Card 5 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/2017_Chevrolet_Cruze_LT_in_Arctic_Blue_Metallic%2C_Front_Left.jpg/280px-2017_Chevrolet_Cruze_LT_in_Arctic_Blue_Metallic%2C_Front_Left.jpg"
+                        class="card-img-top" alt="Car Model 5" style="width: 100%; height: auto;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Chevrolet Cruz</h5>
+                        <p class="card-text">The Cruze car is a multi-tasker that is extremely accomplished thanks to
+                            its ingenious technology.</p>
+                        <p><strong>Rental Rate:</strong> ₹4500 per day</p>
+                        <p><strong>Specifications:</strong><br>
+                            - Engine: 1998 cc<br>
+                            - Transmission: Manual / Automatic<br>
+                            - Seats: 5</p>
+                        <a href="bookingform.html?car=Chevrolet%20Cruze" class="btn btn-primary mt-auto">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Car Card 6 -->
+            <div class="col-md-4 mb-4">
+                <div class="card h-100" style="opacity: 0.5;">
+                    <img src="https://imgd.aeplcdn.com/664x374/n/cw/ec/174323/seltos-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80"
+                        class="card-img-top" alt="Car Model 6" style="width: 100%; height: auto;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Kia Seltos</h5>
+                        <p class="card-text">A compact SUV that offers great versatility and modern features.</p>
+                        <p><strong>Rental Rate:</strong> ₹5000 per day</p>
+                        <p><strong>Specifications:</strong><br>
+                            - Engine: 2.0L 4-Cylinder<br>
+                            - Transmission: Automatic<br>
+                            - Seats: 5</p>
+                        <a href="bookingform.html?car=Kia%20Seltos" class="btn btn-primary mt-auto disabled">Book
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center py-4">
+        <p style="font-size: 20px;">&copy; 2024 NK Car Rental Service | All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

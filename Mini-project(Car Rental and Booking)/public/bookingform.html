@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Car</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #dedaf0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #e0e7f5;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+            height: 100px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggler {
+                display: block;
+            }
+        }
+
+        .navbar-brand {
+            font-size: 25px !important;
+            font-weight: bolder;
+            color: #a52694 !important;
+        }
+
+        .nav-link {
+            font-size: 20px;
+            margin-left: 25px;
+            color: #007bff !important;
+            transition: color 0.3s, transform 0.3s;
+
+        }
+
+        .nav-link:hover {
+            color: #2100b3 !important;
+            text-decoration: underline;
+            transform: scale(1.1);
+        }
+
+        main {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #00b33c;
+            transform: scale(1.05);
+            border: none;
+        }
+
+        footer {
+            background: #1F1C2C;
+            background: -webkit-linear-gradient(to left, #928DAB, #1F1C2C);
+            background: linear-gradient(to left, #928DAB, #1F1C2C);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="https://cdn-icons-png.flaticon.com/128/4965/4965319.png" alt="NK Car Rental Logo" class="logo">
+    <a class="navbar-brand" href="home.html">NK Car Rental</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="carlisting.html">Car Listings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bookingform.html">Book a Car</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bookingmanagement.html">Your Bookings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Signup.html">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<body>
+    <header class="bg-primary text-center py-5"
+        style="background-color: #88a8e7 !important; color: rgb(192, 47, 192);font-weight: bold;">
+        <h1>Book Your Car</h1>
+        <a href="home.html" class="btn btn-light"
+            style="margin-top: 10px; border: none;background-color: #dbe73a;margin-left: auto;">Back to Home</a>
+    </header>
+
+    </header>
+    <main class="container">
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="carModel">Select Car</label>
+                <select class="form-control" id="carModel" required>
+                    <option value="" disabled selected>Choose a car...</option>
+                    <option value="Toyota Fortuner" data-price="10000">Toyota Fortuner</option>
+                    <option value="Honda Amaze" data-price="5500">Honda Amaze</option>
+                    <option value="Ford Endeavour" data-price="9000">Ford Endeavour</option>
+                    <option value="Nissan Magnite XL" data-price="6000">Nissan Magnite XL</option>
+                    <option value="Chevrolet Cruze" data-price="4500">Chevrolet Cruze</option>
+                    <option value="Kia Seltos" data-price="5000">Kia Seltos</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" required>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" id="startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" id="endDate" required>
+            </div>
+            <p id="totalBillDisplay" style="font-weight: bold;"></p>
+            <button type="submit" class="btn btn-primary">Submit Booking</button>
+        </form>
+    </main>
+    <footer class="text-center py-4">
+        <p style="font-size: 20px;">&copy; 2024 NK Car Rental Service | All Rights Reserved.</p>
+    </footer>
+    <script src="booking.js"></script>
+</body>
+
+</html>

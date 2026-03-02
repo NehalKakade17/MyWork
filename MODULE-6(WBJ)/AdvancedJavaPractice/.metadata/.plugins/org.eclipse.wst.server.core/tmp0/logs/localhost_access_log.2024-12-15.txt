@@ -1,0 +1,5 @@
+127.0.0.1 - - [15/Dec/2024:14:58:48 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [15/Dec/2024:14:58:48 +0530] "GET /day14.2/WEB-INF/classes/com/blogs/controller/TestController.java HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [15/Dec/2024:14:58:48 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+127.0.0.1 - - [15/Dec/2024:15:01:46 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [15/Dec/2024:15:01:46 +0530] "GET /day14.3/WEB-INF/classes/com/blogs/controller/TestController.java HTTP/1.1" 404 682

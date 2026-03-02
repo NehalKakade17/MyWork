@@ -1,0 +1,100 @@
+What is JDBC ?
+Java Database Connectivity
+It's an API  present in java.sql module
+(What is a module -- collection of functionally similar packges , introduced in Java 9)
+
+Under java.sql module --
+Packages are - 
+1. java.sql: fixed DB connectivity 
+2. javax.sql : Pooled connectivity
+
+JDBC is used for connecting to DB and to perform CRUD operations
+
+
+Why JDBC ?
+It Supports Platform independence + DB vendor independence(PARTIAL)
+(WORA) : The same JDBC application can run on ANY platform n with ANY DB
+
+Why only partial DB independence ?
+In  JDBC app ,  Since sql syntax can change from one  DB to another DB ,you will need to make the changes in java code(Especially in DAO layer - Data access layer)
+
+What are DB specific configurations ?
+1. JDBC driver 
+2. DB URL
+3. user name
+4. password
+
+In JDBC along with above configurations 
+SQL has to be changed !
+
+Learning Data Access Technologies -
+1 JDBC 
+2.Hibernate 
+3.JPA 
+4. Spring Data JPA (Project technology for Data access layer)
+
+
+HOW does JDBC grant DB independence ?
+1. JDBC Driver(Connector) 
+It's a program to convert 
+Java API (methods) ---> DB understandable format 
+and 
+results of the DB queries are reverse translated in to java data format.
+
+JDBC driver is supplied in a JAR file (eg : mysql-connector.jar, ojdbc8.jar, DB2connector.jar..)
+Vendor for JDBC driver is typically a 
+ DB vendor
+OR
+3rd party  JDBC driver vendors also exist in industy!
+
+2. JDBC API consists of interfaces (Specifications)
+eg : Connection,Statement, PreparedStatement , CallablStatement,ResultSet, Blob , Clob
+Implementation  classes are  present in JAR files (supplied by JDBC JAR vendors)
+
+eg : Connection cn=DriverManager.getConnection(url,userName,pwd);
+This method actually rets : DB specific connection implementation class instance.
+Important Summary 
+JDBC API (java.sql) supplies specs n implementation is left to JDBC driver vendors
+,leading to clean separation between specs(WHAT) vs HOW(imple)
+
+
+
+Objectives
+1. Display all user details : Statement
+(select * from users)
+
+
+2. User login (solve w/o layers)
+Table -users 
+sql - select * from users where email=? and password=?
+
+3. Solve the SAME objective : using Layers
+Tester --- DAO --DBUtils --POJO -- RDBMS
+
+Bottoms up manner
+Table : users
+POJO(Plain Old Java Object/Model/Entity/DTO) : User
+DAO : UserDao i/f n implementation class
+DBUtils : openConnection 
+Tester : create DAO , call DAO's CRUD methods, clean up dao.
+
+What is a JDBC Driver n it's types ?
+(Refer to slides)
+
+Generic Steps in JDBC
+
+Test DB Connection
+
+Test Statement
+
+Enter ORM n layered architecture.
+
+Develop DB application using layered architecture --
+1. User signin 
+User Dao i/f
+add a method for user sign in
+
+1. Display all users(not admin) details born between specified dates.
+2. Register new customer
+3. Update password
+4. Delete customer  details

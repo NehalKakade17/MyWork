@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/back_our/20190620/ourmid/pngtree-singing-competition-stage-background-material-image_161965.jpg);
+    padding: 20px;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 150%;
+}
+
+.form-container {
+    background: linear-gradient(to bottom right, rgba(115, 180, 218, 0.8), rgba(200, 48, 214, 0.8));
+    max-width: 400px;
+    margin: auto;
+    margin-top: 220px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #090f09;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}

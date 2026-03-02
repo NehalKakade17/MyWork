@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Bold Words on Hover</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #6b41b8;
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        p {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        .highlight {
+            background-color: rgb(189, 169, 235);
+        }
+        .hidden {
+            visibility: hidden; 
+        }
+
+        h2:hover + p .hidden {
+            visibility: visible; 
+        }
+    </style>
+    <script>
+        function highlightBoldWords() {
+            const paragraph = document.getElementById("myParagraph");
+            const boldWords = paragraph.querySelectorAll("strong");
+
+            boldWords.forEach(word => {
+                word.classList.add("highlight");
+            });
+        }
+
+        function removeHighlight() {
+            const paragraph = document.getElementById("myParagraph");
+            const boldWords = paragraph.querySelectorAll("strong");
+
+            boldWords.forEach(word => {
+                word.classList.remove("highlight");
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2 onmouseover="highlightBoldWords()" onmouseout="removeHighlight()">
+        This is about EMMA
+    </h2>
+
+    <p id="myParagraph">
+        In a small town, a young girl named <strong class="hidden">Emma</strong> dreamt of becoming a <strong class="hidden">doctor</strong>. Every
+        morning, she would wake up early to study her <strong class="hidden">books</strong> and help her parents at their shop. Despite
+        the challenges, her <strong class="hidden">determination</strong> never wavered. Emma often volunteered at the local clinic,
+        where she learned about patient care and <strong class="hidden">compassion</strong>. Her friends admired her
+        <strong class="hidden">kindness</strong> and ability to balance her studies and responsibilities. As she graduated high school,
+        Emma received a scholarship to a prestigious <strong class="hidden">university</strong>. With hard work and perseverance, she
+        knew she was one step closer to achieving her <strong class="hidden">dream</strong>. Her journey was just beginning, but she
+        was ready to embrace every moment.
+    </p>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Shopping Cart</title>
+    <link rel="stylesheet" href="Q1.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: rgb(72, 7, 192);font-weight: bold;">Simple Shopping Cart</h1>
+        <div class="products">
+            <div class="product">
+                <h2>Samsung S23 Ultra</h2>
+                <p>Price:- RS:124000</p>
+                <button class="add-to-cart" data-price="124000">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>Dell G5 Laptop</h2>
+                <p>Price:- RS:75000</p>
+                <button class="add-to-cart" data-price="75000">Add to Cart</button>
+            </div>
+            <div class="product">
+                <h2>Barbie Doll</h2>
+                <p>Price:- RS:2000</p>
+                <button class="add-to-cart" data-price="2000">Add to Cart</button>
+            </div>
+        </div>
+        <h2 style="color: blue;">Your Cart</h2>
+        <ul id="cart"></ul>
+        <div class="total">
+            <p>Subtotal: RS<span id="subtotal">0.00</span></p>
+            <p>Tax (10%): RS<span id="tax">0.00</span></p>
+            <p>Total: RS<span id="total">0.00</span></p>
+        </div>
+    </div>
+    <script src="Q1.js"></script>
+</body>
+</html>

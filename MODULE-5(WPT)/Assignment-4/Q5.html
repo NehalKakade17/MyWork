@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulate Network Request</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; 
+}
+
+h1 {
+    margin-bottom: 15px; 
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00ff80;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px; 
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+p {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Network Request Simulation</h1>
+        <button id="fetchButton">Fetch Data</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function fetchData(url, callback) {
+            setTimeout(() => {
+                const hasError = Math.random() < 0.3; 
+                if (hasError) {
+                    console.error(`Error fetching data from ${url}`); 
+                    callback(null); 
+                } else {
+                    const response = `Response from ${url}`; 
+                    callback(response); 
+                }
+            }, 2000); 
+        }
+
+        function processData(data) {
+            
+            if (data) {
+                const processedData = data.toUpperCase(); 
+                console.log(`Processed Result: ${processedData}`); 
+                return processedData; 
+            }
+            return null;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            document.getElementById('fetchButton').addEventListener('click', function() {
+                fetchData('https://javascript.info/', function(response) {
+                    if (response) {
+                        console.log(response); 
+                        const processedResult = processData(response); 
+                        document.getElementById('result').innerText = processedResult; 
+                    } else {
+                        document.getElementById('result').innerText = "An error occurred while fetching data."; 
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

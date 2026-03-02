@@ -1,0 +1,32 @@
+package com.blogs.tester;
+
+import static com.blogs.utils.HibernateUtils.getFactory;
+
+import java.util.Scanner;
+
+import org.hibernate.SessionFactory;
+
+import com.blogs.dao.CommentDao;
+import com.blogs.dao.CommentDaoImpl;
+
+public class GetCommentsByPostTitle {
+
+    public static void main(String[] args) {
+        try (SessionFactory sf = getFactory(); Scanner sc = new Scanner(System.in)) {
+            // Create CommentDao instance
+            CommentDao dao = new CommentDaoImpl();
+            
+            // Prompt the user to enter the post title
+            System.out.println("Enter post title to list its comments:");
+            // Use nextLine() to allow spaces in the title
+            String postTitle = sc.nextLine();
+            
+            // Fetch and print all comments for the given post title
+            System.out.println("All comments for the given post title:");
+            dao.getCommentsByPost(postTitle).forEach(System.out::println);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+

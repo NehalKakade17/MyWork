@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bookings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dedaf0;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #e0e7f5;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+            height: 100px;
+        }
+
+        .navbar-toggler-icon {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-toggler {
+                display: block;
+            }
+        }
+
+        .navbar-brand {
+            font-size: 25px !important;
+            font-weight: bolder;
+            color: #a52694 !important;
+        }
+
+        .nav-link {
+            font-size: 20px;
+            margin-left: 25px;
+            color: #007bff !important;
+            transition: color 0.3s, transform 0.3s;
+
+        }
+
+        .nav-link:hover {
+            color: #2100b3 !important;
+            text-decoration: underline;
+            transform: scale(1.1);
+        }
+
+        header {
+            background-color: #88a8e7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        table {
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #ffa600;
+            color: white;
+            font-weight: bolder;
+        }
+
+        .btn-warning {
+            background-color: #3880ec;
+            color: white;
+            height: 30px;
+            margin-top: 13px;
+            margin-right: 10px;
+        }
+
+        .btn-warning:hover {
+            background-color: #a718e0;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: white;
+            height: 30px;
+            margin-top: 13px;
+            margin-left: 10px !important;
+        }
+
+        .btn-success:hover {
+            background-color: #3ee798;
+        }
+
+        .btn-danger {
+            background-color: #252424;
+            color: white;
+            height: 30px;
+            margin-top: 13px;
+        }
+
+        .btn-danger:hover {
+            background-color: #dde018;
+        }
+
+        footer {
+            background: #1F1C2C;
+            background: -webkit-linear-gradient(to left, #928DAB, #1F1C2C);
+            background: linear-gradient(to left, #928DAB, #1F1C2C);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer {
+            background: #1F1C2C;
+            background: -webkit-linear-gradient(to left, #928DAB, #1F1C2C);
+            background: linear-gradient(to left, #928DAB, #1F1C2C);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .btn-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-group button {
+            margin-left: 10px;
+            line-height: normal;
+        }
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="https://cdn-icons-png.flaticon.com/128/4965/4965319.png" alt="NK Car Rental Logo" class="logo">
+    <a class="navbar-brand" href="home.html">NK Car Rental</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="carlisting.html">Car Listings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bookingform.html">Book a Car</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="bookingmanagement.html">Your Bookings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contactus.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Signup.html">Sign Up</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<body>
+    <header class="text-center py-5" style="color: rgb(192, 47, 192);font-weight: bold;">
+        <h1>Your Bookings</h1>
+        <a href="home.html" class="btn btn-light"
+            style="margin-top: 10px; border: none;background-color: #dbe73a;margin-left: auto;">Back to Home</a>
+    </header>
+    <main class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Car Model</th>
+                    <th>Location</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Total Bill</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="bookingsTableBody">
+
+            </tbody>
+        </table>
+    </main>
+    <footer class="text-center py-4">
+        <p style="font-size: 20px;">&copy; 2024 NK Car Rental Service | All Rights Reserved.</p>
+    </footer>
+    <script>
+        let bookings = [];
+        
+        async function getBookings() {
+            try {
+                const response = await fetch('http://localhost:3000/api/bookings');
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error fetching bookings:', errorData.message);
+                    return; 
+                }
+                const bookingsData = await response.json();
+                bookings = bookingsData; 
+                displayBookings(bookings);
+            } catch (error) {
+                console.error('Error fetching bookings:', error);
+            }
+        }
+
+
+        
+        
+        function displayBookings(bookings) {
+            const tableBody = document.getElementById('bookingsTableBody');
+            if (!bookings.length) {
+                tableBody.innerHTML = "<tr><td colspan='7'>No bookings found.</td></tr>";
+                return;
+            }
+
+            const today = new Date();
+
+            bookings.forEach((booking) => {
+                console.log(booking); 
+
+                const row = document.createElement('tr');
+                const endDate = new Date(booking.endDate);
+                const startDate = new Date(booking.startDate);
+
+                
+                if (isNaN(startDate) || isNaN(endDate)) {
+                    console.error('Invalid dates:', booking.startDate, booking.endDate);
+                    return; 
+                }
+
+                const formattedStartDate = startDate.toISOString().slice(0, 10);
+                const formattedEndDate = endDate.toISOString().slice(0, 10);
+                const status = endDate < today ? 'Completed' : (booking.paid ? 'Paid' : 'Not Paid');
+                const totalBill = calculateTotalBill(booking);
+
+                row.innerHTML = `
+            <td>${booking.carModel}</td>
+            <td>${booking.location}</td>
+            <td>${formattedStartDate}</td>
+            <td>${formattedEndDate}</td>
+            <td>₹${totalBill.toFixed(2)}</td>
+            <td>${status}</td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-warning btn-sm" onclick="editBooking(${booking.id})">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="cancelBooking(${booking.id})">Cancel</button>
+                    <button class="btn btn-success btn-sm" onclick="payBooking(${booking.id})">Pay</button>
+                </div>
+            </td>`;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+
+
+        function calculateTotalBill(booking) {
+            const carRates = {
+                "Toyota Fortuner": 3000,
+                "Honda Amaze": 1200,
+                "Ford Endeavour": 3500,
+                "Nissan Magnite XL": 2000,
+                "Chevrolet Cruze": 1800,
+                "Kia Seltos": 2200
+            };
+
+            const dailyRate = carRates[booking.carModel] || 1000;
+            const rentalDays = (new Date(booking.endDate) - new Date(booking.startDate)) / (1000 * 60 * 60 * 24);
+            const validRentalDays = rentalDays > 0 ? rentalDays : 1;
+            const subtotal = dailyRate * validRentalDays;
+            const gst = subtotal * 0.18;
+            return subtotal + gst;
+        }
+
+        
+        
+        async function payBooking(id) {
+            const booking = bookings.find(b => b.id === id);  
+            if (!booking) {
+                alert('Booking not found!');
+                return;
+            }
+
+            const totalBill = calculateTotalBill(booking);
+            const userChoice = confirm(`Total Bill: ₹${totalBill.toFixed(2)}\nDo you want to pay now? Click OK for Yes, Cancel for Later.`);
+
+            if (userChoice) {
+                try {
+                    
+                    const response = await fetch(`http://localhost:3000/api/bookings/${id}/payment`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ paid: 1 })  
+                    });
+
+                    const data = await response.json();
+
+                    
+                    if (response.ok) {
+                        alert('Payment successful!');
+                        location.reload();  
+                    } else {
+                        alert('Error processing payment: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Error processing payment:', error);
+                    alert('Error processing payment: ' + error.message);
+                }
+            } else {
+                alert('You can pay later.');
+            }
+        }
+
+
+
+        
+        async function cancelBooking(id) {
+            if (confirm('Are you sure you want to cancel this booking?')) {
+                try {
+                    const response = await fetch(`http://localhost:3000/api/bookings/${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert('Booking canceled successfully');
+                        location.reload();
+                    } else {
+                        alert('Error canceling booking: ' + data.message);
+                    }
+                } catch (error) {
+                    alert('Error canceling booking: ' + error.message);
+                }
+            }
+        }
+
+        async function getBookingById(id) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/bookings/${id}`);
+                console.log(`Fetching booking with ID: ${id}, Response Status: ${response.status}`);
+                
+                if (!response.ok) {
+                    let errorData = { message: `Unexpected response: ${response.status}` };
+                    if (response.headers.get('Content-Type')?.includes('application/json')) {
+                        
+                        errorData = await response.json();
+                    }
+                    console.error('Error fetching booking:', errorData.message);
+                    return null;  
+                }
+
+                
+                const booking = await response.json();
+
+                
+                if (!booking || Object.keys(booking).length === 0) {
+                    console.error('Booking not found or invalid response.');
+                    return null;  
+                }
+
+                return booking;
+            } catch (error) {
+                console.error("Error fetching booking by ID:", error);
+                return null; 
+            }
+        }
+
+
+        
+        async function editBooking(id) {
+            console.log("Edit button clicked for booking ID:", id);  
+            const booking = await getBookingById(id);
+            if (!booking) {
+                console.error("No booking data found.");
+                alert('Booking not found!');
+                return;
+            }
+            const availableCarModels = [
+                "Toyota Fortuner",
+                "Honda Amaze",
+                "Ford Endeavour",
+                "Nissan Magnite XL",
+                "Chevrolet Cruze",
+                "Kia Seltos"
+            ];
+            let newCarModel = prompt("Edit Car Model:", booking.carModel);
+            while (!availableCarModels.includes(newCarModel)) {
+                if (newCarModel !== null) {
+                    alert("Invalid car model. Please choose a valid car from the list.");
+                    newCarModel = prompt("Edit Car Model:", booking.carModel);
+                } else {
+                    
+                    return;
+                }
+            }
+
+
+            const newLocation = prompt("Edit Location:", booking.location);
+
+            let newStartDate = prompt("Edit Start Date (YYYY-MM-DD):", formatDate(booking.startDate));
+            newStartDate = validateDate(newStartDate);
+            if (!newStartDate) {
+                alert("Invalid start date. Please use the format YYYY-MM-DD.");
+                return;
+            }
+
+            
+            let newEndDate = prompt("Edit End Date (YYYY-MM-DD):", formatDate(booking.endDate));
+            newEndDate = validateDate(newEndDate);
+            if (!newEndDate) {
+                alert("Invalid end date. Please use the format YYYY-MM-DD.");
+                return;
+            }
+
+            if (!newCarModel || !newLocation || !newStartDate || !newEndDate) {
+                alert("All fields are required.");
+                return;
+            }
+            if (new Date(newStartDate) >= new Date(newEndDate)) {
+                alert("Start date must be before the end date.");
+                return;
+            }
+
+            const updatedBooking = {
+                carModel: newCarModel,
+                location: newLocation,
+                startDate: newStartDate,
+                endDate: newEndDate
+            };
+
+            try {
+                console.log("Sending update request to server for booking:", updatedBooking);
+                const response = await fetch(`http://localhost:3000/api/bookings/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedBooking)
+                });
+
+                const data = await response.json();
+                console.log("Server response for booking update:", data);  
+                if (response.ok) {
+                    alert('Booking updated successfully!');
+                    location.reload();
+                } else {
+                    alert('Error updating booking: ' + (data.message || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error updating booking:', error);
+                alert('Error updating booking: ' + error.message);
+            }
+        }
+        function formatDate(date) {
+            const d = new Date(date);
+            return d.toISOString().slice(0, 10); 
+        }
+
+        
+        function validateDate(date) {
+            
+            const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+            if (!datePattern.test(date)) {
+                return null;  
+            }
+            const parsedDate = new Date(date);
+            
+            return isNaN(parsedDate.getTime()) ? null : date;
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', getBookings);
+
+    </script>
+
+    <!-- <script src="editbooking.js"></script> -->
+</body>
+
+</html>

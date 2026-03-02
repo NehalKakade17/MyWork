@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+
+body {
+    background: url('https://www.nme.com/wp-content/uploads/2022/12/girls-reverse-kakao-entertainment-virtual-kpop-idol-survival-reality-series.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.navbar {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar li {
+    display: inline;
+    margin: 0 20px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px; 
+}
+
+.navbar a:hover {
+    background: rgba(179, 212, 218, 0.3);
+    transform: scale(1.05); 
+}
+
+main {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scrolling-text {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: scroll 10s linear infinite;
+    font-size: 20px; 
+    margin: 20px 0;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin: 20px auto; 
+    max-width: 400px; 
+}
+button {
+    background: #007BFF; 
+    color: white; 
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    display: block;
+    margin-left: 140px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #b300a4; 
+    transform: scale(1.05); 
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px; 
+    }
+    
+    .navbar li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+#search {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+#search h2 {
+    color: #007bff;
+}
+
+#search input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+
+
+
+
+

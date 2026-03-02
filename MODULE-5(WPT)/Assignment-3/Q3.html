@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+
+        select {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4dc4e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #882188;
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Items from Dropdown</title>
+    <script>
+        function removeSelectedItem() {
+            const select = document.getElementById("myDropdown");
+            const selectedIndex = select.selectedIndex;
+            if (selectedIndex !== -1) {
+                select.remove(selectedIndex); 
+            } else {
+                alert("Please select an item to remove.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Remove Item from Dropdown</h1>
+    <select id="myDropdown">
+        <option value="APPLE">APPLE</option>
+        <option value="MANGO">MANGO</option>
+        <option value="BANANA">BANANA</option>
+        <option value="WATERMELON">WATERMELON</option>
+    </select>
+    <button onclick="removeSelectedItem()">Remove Selected Item</button>
+
+</body>
+</html>

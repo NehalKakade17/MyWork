@@ -1,0 +1,31 @@
+#DB URL : jdbc:mysql://localhost:3306/advjava?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+	
+# table
+create table users (id int primary key auto_increment,first_name varchar(20),last_name varchar(20),
+email varchar(20) unique,password varchar(20),dob date,status boolean,role varchar(20));
+
+#DML
+
+insert into users values(default,'Rama','Kher','rama@gmail.com','ram#123','1999-1-1',0,'admin');
+insert into users values(default,'Shekhar','Patil','shekhar@gmail.com','shk#123','1992-10-20',0,'voter');
+insert into users values(default,'Medha', 'Khole','medha@gmail.com','mad$234','1990-11-21',0,'voter');
+
+#candidates table 
+create table candidates(id int primary key auto_increment,
+name varchar(20) unique,party varchar(20),votes int);
+
+insert into candidates values(default,'Ravi Kiran','bjp',100);
+insert into candidates values(default,'Asha Sachdev','ncp',78);
+insert into candidates values(default,'Kirti More','congress',70);
+insert into candidates values(default,'Riya Pathak','sp',50);
+insert into candidates values(default,'Subhash Patil','aap',67);
+
+insert into candidates values(default,'Sheela Mishra','bjp',70);
+insert into candidates values(default,'Kishor Singh','ncp',72);
+insert into candidates values(default,'Shreyas Patil','congress',76);
+
+
+# You can add more candidates under same political party , for party wise , votes analysis
+# Also changes the votes to test top 2 analysis
+
+

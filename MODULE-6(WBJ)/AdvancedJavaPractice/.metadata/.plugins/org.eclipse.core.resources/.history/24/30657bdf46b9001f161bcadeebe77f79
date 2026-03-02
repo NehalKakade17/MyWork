@@ -1,0 +1,93 @@
+package com.blogs.dao;
+
+import static com.blogs.utils.HibernateUtils.getFactory;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.blogs.pojos.Comment;
+import com.blogs.pojos.BlogPost;
+import com.blogs.pojos.User;
+
+public class CommentDaoImpl implements CommentDao {
+
+    @Override
+    public String postNewComment(Comment newComment, Long commenterId, Long postId) {
+        String message = "Adding comment failed!";
+        // 1. Get Session from SessionFactory
+        Session session = getFactory().getCurrentSession();
+        // 2. Begin a Transaction
+        Transaction tx = session.beginTransaction();
+
+        try {
+            // 3. Fetch User (commenter) by ID
+            User commenter = session.get(User.class, commenterId);
+            // 4. Fetch Post by ID
+            BlogPost post = session.get(BlogPost.class, postId);
+
+            // 5. Validate if both the commenter and post exist
+            if (commenter != null && post != null) {
+                // Set the commenter and post associations on the comment
+                newComment.setCommenter(commenter);  // Set the commenter (User)
+                newComment.setPost(post);  // Set the associated post
+
+                // 6. Persist the new comment to the database
+                session.save(newComment);
+
+                // Commit the transaction
+                tx.commit();
+                message = "Comment added successfully!";
+            } else {
+                message = "Commenter or Post not found!";
+            }
+
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();  // Rollback transaction in case of an error
+            }
+            e.printStackTrace();
+            throw e;  // Rethrow exception to be handled by the caller
+        }
+        return message;
+    }
+
+    @Override
+    public List<Comment> getCommentsByPost(String postTitle) {
+        List<Comment> comments = null;
+        // 1. Get Session from SessionFactory
+        Session session = getFactory().getCurrentSession();
+        // 2. Begin a Transaction
+        Transaction tx = session.beginTransaction();
+
+        try {
+            // 3. Fetch Post by title
+            String jpql = "SELECT p FROM BlogPost p WHERE p.title = :title";
+            BlogPost post = session.createQuery(jpql, BlogPost.class)
+                               .setParameter("title", postTitle)
+                               .getSingleResult();
+
+            // 4. Fetch all comments associated with this post
+            jpql = "SELECT c FROM Comment c WHERE c.post = :post";
+            comments = session.createQuery(jpql, Comment.class)
+                              .setParameter("post", post)
+                              .getResultList();
+
+            // Commit transaction
+            tx.commit();
+
+        } catch (RuntimeException e) {
+            if (tx != null) {
+                tx.rollback();  // Rollback transaction in case of an error
+            }
+            e.printStackTrace();
+            throw e;  // Rethrow exception to be handled by the caller
+        }
+
+        return comments;  // Return list of comments for the given post
+    }
+}
+
+
+

@@ -1,0 +1,68 @@
+package com.blogs.dao;
+
+import static com.blogs.utils.HibernateUtils.getFactory;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.blogs.pojos.Comment;
+
+public class CommentDaoImpl implements CommentDao {
+
+	@Override
+	@Override
+	public String postNewComment(Comment newComment, Long commenterId, Long postId) {
+	    String mesg = "Adding comment failed ....";
+	    Session session = getFactory().getCurrentSession();
+	    Transaction tx = session.beginTransaction();
+
+	    try {
+	        // Fetch the User (commenter) and Post by their IDs
+	        User commenter = session.get(User.class, commenterId);
+	        Post post = session.get(Post.class, postId);
+
+	        if (commenter != null && post != null) {
+	            // Set the commenter and post to the comment
+	            newComment.setCommenter(commenter);  // Set commenter
+	            newComment.setPost(post);  // Set post
+	            
+	            // Save the new comment
+	            session.save(newComment);
+	            
+	            tx.commit();
+	            mesg = "Comment added successfully!";
+	        } else {
+	            mesg = "User or Post not found!";
+	        }
+	    } catch (RuntimeException e) {
+	        if (tx != null) {
+	            tx.rollback();
+	        }
+	        throw e;
+	    }
+	    
+	    return mesg;
+	}
+
+
+	@Override
+	public List<Comment> getCommentsByPost(String postTitle) {
+		List<Comment> comments = null;
+		// 1. get session from SF (getCurrentSession)
+		Session session = getFactory().getCurrentSession();
+		// 2. Begin a Tx
+		Transaction tx = session.beginTransaction();
+		try {
+			tx.commit();
+		} catch (RuntimeException e) {
+			if (tx != null)
+				tx.rollback();
+			// re throw the exc to the caller
+			throw e;
+		}
+		return comments;
+	}
+
+}

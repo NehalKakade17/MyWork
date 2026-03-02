@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- add dependent bean config -->
+	<!-- public school singleton n eager -->
+	 <bean id="public_school" class="dependent.PublicSchool">
+		<!-- Constructor Based D.I -->
+		<constructor-arg name="englishTeacher" ref="eng" />
+        <constructor-arg name="scienceTeacher" ref="sc" />
+        <constructor-arg name="mathsTeacher" ref="mt" />
+	</bean>
+	<!-- add dependency bean config -->
+	<!-- eng teacher bean singleton n eager -->
+	<bean id="eng" class="dependency.EnglishTeacher" />
+	<!-- maths singleton n lazy -->
+	<bean id="maths" class="dependency.MathsTeacher"/>
+	<!-- sc prototype always loaded lazily one per demand -->
+	<bean id="sc" class="dependency.ScienceTeacher"/>
+
+
+
+</beans>

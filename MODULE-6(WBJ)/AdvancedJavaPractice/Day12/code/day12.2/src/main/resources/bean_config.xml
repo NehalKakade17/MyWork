@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- add dependent bean config -->
+	<!-- public school singleton n eager -->
+	 <bean id="public_school" class="dependent.PublicSchool">
+		<!-- Constructor Based D.I -->
+		<constructor-arg name="englishTeacher" ref="eng" />
+        <constructor-arg name="scienceTeacher" ref="sc" />
+        <constructor-arg name="mathsTeacher" ref="maths" />
+	</bean>
+	<bean id="public_coach" class="dependent.PublicCoach">
+		<!-- Constructor Based D.I -->
+		<constructor-arg name="cricketCoach" ref="cc" />
+        <constructor-arg name="footballCoach" ref="fc" />
+        <constructor-arg name="swimmingCoach" ref="swc" />
+	</bean>
+	<!-- add dependency bean config -->
+	<!-- eng teacher bean singleton n eager -->
+	<bean id="eng" class="dependency.EnglishTeacher" />
+	<!-- maths singleton n lazy -->
+	<bean id="maths" class="dependency.MathsTeacher"/>
+	<!-- sc prototype always loaded lazily one per demand -->
+	<bean id="sc" class="dependency.ScienceTeacher"/>
+	<!-- add dependency bean config -->
+	<!-- eng teacher bean singleton n eager -->
+	<bean id="cc" class="dependency.CricketCoach" />
+	<!-- maths singleton n lazy -->
+	<bean id="fc" class="dependency.FootballCoach"/>
+	<!-- sc prototype always loaded lazily one per demand -->
+	<bean id="swc" class="dependency.SwimmingCoach"/>
+
+
+</beans>

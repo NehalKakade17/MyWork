@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day15\code\day15.2"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day14\code\day14.3"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day14\code\day14.2"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.7"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.6"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.5"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.4"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.3"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.2"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day13\code\day13.1"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day12\code\day12.2"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day12\code\day12.1"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day11\day11_lab"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day10\code\day10.2"/>
+			<item value="D:\AdvancedJava\sts-bundle\AdvancedJavaPractice\Day10\code\day10.1"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

@@ -1,0 +1,220 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Verdana;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs28\lang9 Today's topics\par
+Revision\par
+SQL Injection attack n it's prevention\par
+CallableStatement in JDBC n execution of stored procedure\par
+ResultSet Cursors\par
+Transaction management overview in JDBC\par
+Enter Java EE 8\par
+HTTP request response flow\par
+Dynamic web project structure\par
+Java Servlets - concept , API n deployment\par
+Servlet Integration with JDBC (if time permits )\par
+Version Java EE(Enterprise Edition)  8 (Java EE 1.8) maintained under Oracle  / Jakarta EE 8 (maintained by eclipse foundation)\par
+\par
+1. Revision of JDBC\par
+2. For SQL injection , \par
+Refer  - \par
+WebJava\\day2-data\\day2_help\\SQL injection \par
+readmes n code\par
+3. Invocation of Stored Procedure / function\par
+Development stpes\par
+3.1 Create CallableStatment\par
+Use Connection i/f method\par
+public CallableStatement prepareCall(String sql) throws SQLException\par
+JDBC syntax for calling a procedure -\{call procName(?,?,?,....?)\}\par
+sql syntax for calling a function -\{?=call funcName(?,?,?,....?)\}\par
+\{\} => Esc sequence meant for JDBC driver to translate proc/func invocation in DB specific manner.\par
+? => IN | OUT | IN OUT\par
+3.2 For OUT n IN OUT parameters , \par
+Register them with JVM (i.e you will have to specify generic SQL type - available from constants in java.sql.Types class , before the execution)\par
+API of CallableStatement\par
+public void registerOutParameter(int parameterIndex,int sqlType) throws SQLException\par
+3.3 Set IN parameters\par
+Methods inherited from PreparedStatement\par
+public void setType(int paramIndex,Type value);\par
+3.4 Execute the procedure / function\par
+public boolean execute() throws SQLException\par
+Ignore return value here.\par
+3.5 Read results from OUT parameters\par
+Method of CallableStatement\par
+public Type getType(int paramIndex) throws SQLException\par
+paramIndex - index of OUT parameter.\par
+type - JDBC data type (generic SQL type)\par
+\par
+4. Default type of the ResultSet cursor\par
+TYPE_FORWARD_ONLY => can traverse in forward direction only.\par
+READ_ONLY => can only use getters to read data from Result set\par
+Using additional APIs , it can be changed to \par
+SCROLLABLE_TYPE n can be updated.\par
+For more details - "day1_help\\jdbc help\\readme_jdbc.txt"\par
+5. Transaction(Tx) management overview\par
+Steps \par
+1. To begin a Tx , disable auto commit\par
+Connection i/f method\par
+public void setAutoCommit(boolean flag) throws SE\par
+2. Wrap entire Tx in a try block.\par
+2.1 At the end of try block , commit the Tx.\par
+Connection i/f method\par
+public void commit() throws SE\par
+2.2 In a catch block , rollback Tx\par
+Connection i/f method\par
+public void rollback() throws SE\par
+3. To continue after Tx , enable auto commit flag.\par
+eg : connection.setAutoCommit(true);\par
+\par
+Enter Web programming in Java \par
+\par
+1. What is Java EE ?(Java Enterprise Edition)\par
+Version - Java EE 8 (vendor - Oracle / Sun Microsystem)\par
+Will be upgraded to Java EE 9 - Jakarta EE 9 (Maintained by Eclipse Foundation)\par
+It is a set of specifications that extends the Java SE (Standard Edition) for additional enterprise features \par
+eg - distributed computing and web services. \par
+It's designed to provide a platform for building and deploying large-scale, multi-tiered, scalable, and secure network applications.\par
+Which specifications ? (Rules or contract )\par
+Specifications of primary essential services required for any enterprise application.\par
+What is enterprise application ?\par
+An enterprise application (EA) is a large software system platform designed to operate in a corporate environment . Typically , it is server side , transactional , multi threaded ,complex , scalable application\par
+\par
+It includes online shopping and payment processing, interactive product catalogs, computerized billing systems, security, content management, IT service management,  business intelligence, human resource management, manufacturing, process automation, enterprise resource planning ....\par
+\par
+The Java EE  specifications include ---\par
+\par
+Servlet API,JSP(Java server page) API,Security,Connection pooling ,EJB (Enterprise Java Bean), JNDI(Naming service -- Java naming & directory i/f),JPA(java persistence API),JMS(java messaging service),Java Mail, Java Server Faces , Java Transaction API, Webservices support(SOAP/REST) etc...\par
+\par
+Vendor of Java EE specs - Oracle / Sun / Eclipse\par
+Implementation - left to vendors (Java EE server vendors)\par
+Java EE compliant web server - Apache supplied \par
+- Tomcat (web server)\par
+Services implemented --- servlet API,JSP API,Security,Connection pooling,JNDI(naming service)\par
+\par
+Java EE complaint application server --- web container + EJB (enterprise java bean) container\par
++ ALL Java EE services implementation\par
+\par
+Java EE server Vendors & Products\par
+Apache -- Tomcat(web server) / Tomee (app server)\par
+Oracle / Sun --- reference implementation --- Glassfish\par
+Red Hat -- JBoss (wild fly)\par
+Oracle / BEA -- Oracle weblogic\par
+IBM -- Websphere\par
+\par
+\b 2. WHY Java EE\b0\par
+1. It can support different types of clients including \par
+ thin client(web client)\par
+ thick client --- java application client\par
+smart clients -- mobile clients\par
+2. Java EE based applications are server independent.  \par
+You can Create & deploy server side appln , on ANY Java EE compliant server .\par
+It is  guaranteed to produce the SAME results w/o any modifications on  ANY other Java EE server\par
+3.Java EE servers provide -\par
+ Ready made implementation of primary services,  so that Java EE developer doesn't have to worry about it's implelementation ,but  rather can concentrate on actual business logic.\par
+3. Layers involved in HTTP request-response flow (refer to day1-data\\day1_help\\diags\\request-response-flow.png)\par
+\par
+4. What is dyn web application?\par
+It is a server side appln , deployed on web server , meant for servicing typically web clients,  using application layer protocol  HTTP /HTTPS\par
+(ref : diag request-resp flow)\par
+\par
+URL : {{\field{\*\fldinst{HYPERLINK http://www.mybank.com:8080/banking }}{\fldrslt{http://www.mybank.com:8080/banking\ul0\cf0}}}}\f0\fs28\par
+http : app layer protocol(scheme)\par
+{{\field{\*\fldinst{HYPERLINK www.mybank.com }}{\fldrslt{www.mybank.com\ul0\cf0}}}}\f0\fs28  : DNS qualified host name /IP address (to resolve the host)\par
+8080 : TCP port no (to identify the port --> service : web server)\par
+/banking : path or URI (uniform resource identifier)\par
+In Java , when you are creating a web app \par
+URI : starts with context path (web context =web app) , typically set as web project name.\par
+5. Objective \par
+ Creating & deploying a dyn web appln on Tomcat \par
+Test HTML content\par
+6. IDE automatically creates Java EE compliant web application folder structure .\par
+Its details -- Refer to diag (Java EE compliant web app folder structure)\par
+7. What is Web container (WC) & its jobs -\par
+It is a Server side JVM residing within web server.\par
+Its run-time environment for dynamic web components(Servlet & JSP,Filter) . \par
+Jobs -\par
+1. Creating Http Request & Http response objects \par
+2. Controlling life-cycle of dynamic web components (manages life cycle of servlet,JSP,Filters)\par
+3. Giving ready-made support for services - Naming,security,Conn pooling .\par
+4. Handling concurrent request from multiple clients .\par
+5. Managing session tracking\par
+6. Manages state(session tracking)\par
+7. Helps in page navigation \par
+n many more...\par
+8. What is web.xml ?--- Deployment descriptor one per web appln\par
+created by - developer (with help of IDE)\par
+who reads it - WC\par
+when --- deployment time \par
+what does it consist of ?\par
+Deployment instructions \par
+eg - welcome page, servlet deployment tags, sessio configuration, security configuration etc.\par
+9. Why servlets? \par
+ To add dynamic nature to the web application , performing these jobs\par
+Job list\par
+1. Request processing\par
+2. B.L (Business Logic)\par
+3. Dynamic response generation\par
+4. Managing DAO layer\par
+5. Page navigation\par
+What is a servlet ?\par
+It is a Java class (without main method) \par
+Represents a  dynamic web component , whose life cycle will be managed by WC\par
+Life cycle methods - init,service,destroy\par
+\par
+10. Servlet API details --\par
+refer to diag servlet-api.png\par
+Objective - Test basic servlet life cycle  -- init , service ,destroy\par
+Creating & deploying HelloWorld Servlet. \par
+Deployment of the servlet\par
+1. Via annotation\par
+eg : @WebServlet(value="/hello")\par
+public class HelloWorldServlet extends HttpServlet \{....\}\par
+Meaning : A class level annotation , for WC, to add the mapping between incoming url-pattern n the servlet.\par
+A URL mapping's Map ,  will be created by WC  , at the web app deployment time \par
+key --  url-pattern eg : /hello\par
+value -- Fully qualified servlet cls name (eg : pages.HelloWorldServlet)\par
+\par
+URL : {{\field{\*\fldinst{HYPERLINK http://host:port/day1.1/hello }}{\fldrslt{http://host:port/day1.1/hello\ul0\cf0}}}}\f0\fs28\par
+URI : /day1.1/hello\par
+URL pattern : /hello\par
+OR \par
+2. Legacy approach to deploy a servlet w/o annotations : Use XML tags in web.xml\par
+<servlet>\par
+ <servlet-name>abc</servlet-name>\par
+<servlet-class>pages.SecondServlet</servlet-class>\par
+</servlet>\par
+<servlet-mapping>\par
+ <servlet-name>abc</servlet-name>\par
+ <url-pattern>/test2</url-pattern>\par
+</servlet-mapping>\par
+WC created  map  will have a \par
+key : /test2\par
+value  : pages.SecondServlet\par
+At the time of web app deployment , WC tries to populate URL map, from XML tags or using @WebServlet annotation\par
+(via Reflection)\par
+Objective 2: Test basic servlet life cycle  -- init , service ,destroy (deployed via xml)\par
+\par
+10. How to read request params sent from the client ?\par
+javax.servlet.ServletRequest i/f methods\par
+1. public String getParameter(String paramName)\par
+2. public String[] getParameterValues(String paramName)\par
+\par
+What is default loading policy of WC for servlets ?  \par
+Lazy\par
+Meaning - WC will start life cycle of the servlet , only after client sends the 1st request to the servlet\par
+Can you change it to eager ? Yes\par
+Use Case : Typically for time consuming(heavy weight) initializations \par
+eg : setting up DB conn, setting up spring frmwork....\par
+HOW ?\par
+@WebServlet (value="/test",loadOnStartup=1)\par
+OR\par
+use xml tag : \par
+<load-on-startup>1</load-on-startup>\par
+Solve -\par
+Load HelloWorldServlet eagerly @ app deployment time.\par
+Let HelloWorldServlet2 - get loaded by default in  lazy manner.\par
+Objective  \par
+Servlet JDBC Integration\par
+case study - online voting\par
+Complete user authentication\par
+}
+ 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.blogs.utils.HibernateUtils"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="dependency.ScienceTeacher"/>
+    <fullyQualifiedTypeName name="dependency.Teacher"/>
+    <fullyQualifiedTypeName name="dependency.EnglishTeacher"/>
+    <fullyQualifiedTypeName name="dependency.MathsTeacher"/>
+    <fullyQualifiedTypeName name="dependent.PublicCoach"/>
+</qualifiedTypeNameHistroy>

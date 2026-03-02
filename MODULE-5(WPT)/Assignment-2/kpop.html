@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Pop Entertainment</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="kpop.css">
+</head>
+<body>
+    <header>
+        <div class="logo">K-Pop Entertainment</div>
+        <nav>
+            <ul class="navbar">
+                <li><a href="../Assignment-1/Registration.html">Home</a></li>
+                <li><a href="AboutUs.html">About Us</a></li>
+                <li>
+                    <a href="../Assignment-1/SignUp.html">Sign Up</a>
+                </li>
+                <li>
+                    <a href="../Assignment-1/SignIn.html">Sign In</a>
+                </li>
+                <li>
+                    <a href="../Assignment-1/contactUs.html">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Welcome to K-Pop Entertainment</h1>
+            <div class="scrolling-text">Join us for the latest K-Pop news and events!</div>
+        </section>
+        <section id="search">
+            <h2>Search K-Pop Groups</h2>
+            <form action="https://kpop.fandom.com/wiki/HYBE" method="GET">
+                <input type="text" name="group" placeholder="Search for K-Pop Groups" list="groups" required>
+                <datalist id="groups">
+                    <option value="BTS">
+                    <option value="Seventeen">
+                    <option value="TXT">
+                    <option value="Katseye">
+                </datalist>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 K-Pop Entertainment. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

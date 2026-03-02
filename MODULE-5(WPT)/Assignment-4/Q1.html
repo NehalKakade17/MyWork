@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String to Uppercase Converter</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3d28a7;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+p {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>String to Uppercase Converter</h1>
+        <input type="text" id="inputString" placeholder="Enter a string" />
+        <button id="convertButton">Convert to Uppercase</button>
+        <p id="result"></p>
+    </div>
+    <script >
+      
+        function toUpperCase(str) {
+            return str.toUpperCase();
+        }
+
+
+        function processData(inputString, callback) {
+            return callback(inputString);
+        }
+
+
+        document.getElementById('convertButton').addEventListener('click', function() {
+        const inputString = document.getElementById('inputString').value;
+        const result = processData(inputString, toUpperCase);
+        document.getElementById('result').innerText = result;
+        });
+
+
+    </script>
+</body>
+</html>
